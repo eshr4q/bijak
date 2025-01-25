@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
-
 const DropDown = ({ label, options, value, onChange }) => {
   const handleChange = (e) => {
-    console.log("Selected city:", e.target.value);  
-    onChange(e);
+    console.log("Selected city ID:", e.target.value);
+    onChange(e.target.value); 
   };
 
   return (
@@ -16,17 +15,15 @@ const DropDown = ({ label, options, value, onChange }) => {
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          {Array.isArray(options) ? (
-            options.map((option, index) => (
-              <option key={index} value={option} className="text-gray-800">
-                {option}
+          <option value="" className="text-gray-400">
+            یک شهر انتخاب کنید
+          </option>
+          {Array.isArray(options) &&
+            options.map((option) => (
+              <option key={option.id} value={option.id} className="text-gray-800">
+                {option.city_name} {/* نمایش نام شهر */}
               </option>
-            ))
-          ) : (
-            <option value="" className="text-gray-400">
-              No options available
-            </option>
-          )}
+            ))}
         </select>
         <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
           <svg

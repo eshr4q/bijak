@@ -9,6 +9,9 @@ const HomePage = () => {
 
   const handleSelectOrigin = (coordinates) => {
     setOriginCoordinates(coordinates);
+  };
+
+  const handleShowForm = () => {
     setShowForm(true);
   };
 
@@ -17,7 +20,7 @@ const HomePage = () => {
       {showForm ? (
         <Form originCoordinates={originCoordinates} />
       ) : (
-        <Map onSelectOrigin={handleSelectOrigin} />
+        <Map onSelectOrigin={handleSelectOrigin} onShowForm={handleShowForm} />
       )}
     </div>
   );
