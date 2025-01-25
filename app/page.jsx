@@ -5,14 +5,20 @@ import Form from "../components/Form";
 
 const HomePage = () => {
   const [showForm, setShowForm] = useState(false);
+  const [originCoordinates, setOriginCoordinates] = useState(null);
 
-  const handleSelectOrigin = () => {
+  const handleSelectOrigin = (coordinates) => {
+    setOriginCoordinates(coordinates);
     setShowForm(true);
   };
 
   return (
     <div>
-      {showForm ? <Form /> : <Map onSelectOrigin={handleSelectOrigin} />}
+      {showForm ? (
+        <Form originCoordinates={originCoordinates} />
+      ) : (
+        <Map onSelectOrigin={handleSelectOrigin} />
+      )}
     </div>
   );
 };
